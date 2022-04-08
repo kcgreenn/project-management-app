@@ -17,14 +17,24 @@ public class ProjectController {
 	@Autowired
 	IProjectRepository proRepo;
 	
+	@GetMapping("")
+	public String displayProjectHome(Model model) {
+		// Get all project data
+		java.util.List<Project> projects = proRepo.findAll();
+		// Map data to template
+		model.addAttribute("projects", projects);
+		// Return project home template
+		return "projects/main";
+	}
+	
 	@GetMapping("/new")
 	public String displayProjectForm(Model model) {
-		// Create a new project ith default constructor
+		// Create a new project with default constructor
 		Project aProject = new Project();
 		// Get user input for new project attributes
 		model.addAttribute("project", aProject);
 		// Serve new project form page
-		return "new-project";
+		return "projects/new-project";
 	}
 	
 	@PostMapping("/save")

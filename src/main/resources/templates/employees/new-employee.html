@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head th:replace="layouts :: header"></head>
+  <body>
+    	<nav th:replace="layouts :: navbar"></nav>
+	<div class="container mx-auto">
+		<form action="/employees/save" method="POST" th:object="${employee}" class="mt-5 col">
+			<div class="form-group">
+				<h2>Add Employee</h2>
+			    <label class="mt-3" for="firstName">First Name</label>
+				<input class="form-control" id="firstName" name="firstName"type="text" placeholder="John" th:field="${employee.firstName}">
+				<label class="mt-3" for="lastName">Last Name</label>
+				<input class="form-control" id="lastName" name="lastName" type="text" placeholder="Doe" th:field="${employee.lastName}">
+				<label class="mt-3" for="email">Email address</label>
+				<input class="form-control" id="email" name="email" type="text" placeholder="example@email.com" th:field="${employee.email}">
+				<div class="row mt-5">
+					<a th:href="@{/employees}" title="Cancel" class="col">
+						<button class="btn btn-danger mt-3 col" type="button">Cancel</button>
+					</a>
+					<button class="btn btn-success mt-3 col" type="submit">Create</button>
+				</div>
+			</div>
+		</form>
+	</div>
+  </body>
+</html>

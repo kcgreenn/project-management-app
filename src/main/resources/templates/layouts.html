@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html smlns:th="http://www.thymeleaf.org">
+  <head th:fragment="header">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>PMA - Project Management Application</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/css/fontawesome.min.css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- Leave those next 4 lines if you care about users using IE8 -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+	<nav th:fragment = "navbar" class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<div class="container">
+			<a class="navbar-brand mr-auto" th:href="@{/}">PMA - Project Manager</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav ml-auto">
+			    	<li class="nav-item active">
+			        	<a class="nav-link" th:href="@{/}">Home <span class="sr-only">(current)</span></a>
+			      	</li>
+			      	<li class="nav-item">
+			        	<a class="nav-link" th:href="@{/projects}">Projects</a>
+			      	</li>
+			      	<li class="nav-item">
+			        	<a class="nav-link" th:href="@{/employees}">Employees</a>
+			      	</li>
+			    </ul>
+	  		</div>
+		</div>
+	</nav>
+	<!-- Footer -->
+	<footer th:fragment = "footer" class="text-center text-lg-start bg-light text-muted">
+		<!-- Copyright -->
+  		<div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+    		© 2022 Copyright:
+    		<a class="text-reset fw-bold" href="https://mdbootstrap.com/">PMA</a>
+  		</div>
+  		<!-- Copyright -->	
+	</footer>
+</html>
