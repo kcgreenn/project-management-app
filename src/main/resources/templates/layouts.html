@@ -9,6 +9,9 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/css/fontawesome.min.css">
+    <link rel="stylesheet" th:href="@{css/formatting.css}">
+
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- Leave those next 4 lines if you care about users using IE8 -->
@@ -19,19 +22,19 @@
   </head>
 	<nav th:fragment = "navbar" class="navbar navbar-expand-lg navbar-dark bg-dark">
 		<div class="container">
-			<a class="navbar-brand mr-auto" th:href="@{/}">PMA - Project Manager</a>
+			<a class="navbar-brand" th:href="@{/}">PMA - Project Manager</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
 			<div class="collapse navbar-collapse" id="navbarNav">
 				<ul class="navbar-nav ml-auto">
-			    	<li class="nav-item active">
+			    	<li class="nav-item" th:classappend="${#httpServletRequest.getRequestURI() == '/' ? 'active':''}">
 			        	<a class="nav-link" th:href="@{/}">Home <span class="sr-only">(current)</span></a>
 			      	</li>
-			      	<li class="nav-item">
+			      	<li class="nav-item" th:classappend="${#httpServletRequest.getRequestURI() == '/projects' ? 'active':''}">
 			        	<a class="nav-link" th:href="@{/projects}">Projects</a>
 			      	</li>
-			      	<li class="nav-item">
+			      	<li class="nav-item" th:classappend="${#httpServletRequest.getRequestURI() == '/employees' ? 'active':''}">
 			        	<a class="nav-link" th:href="@{/employees}">Employees</a>
 			      	</li>
 			    </ul>

@@ -5,23 +5,26 @@
   	<nav th:replace="layouts :: navbar"></nav>
 	<div class="container" style="min-height:75vh">
 		<div class="row mt-5">
-			<h1 class="col-6">PMA - Projects</h1>
+			<h1 class="col-6">Current Projects</h1>
+			<hr />
 			<a th:href="@{/projects/new}" class="mx-auto my-0 col-6">
 					<button class="btn btn-success float-right ">Add Project</button>
 			</a>
 		</div>
-		<div class="row mt-3">
-				<table class="table mt-5">
+		<div class="row">
+				<table class="table">
 					<thead class="thead-dark">
 						<tr>
 							<th>Name</th>
 							<th>Stage</th>
+							<th>Description</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr th:each="aProject : ${projects}">
 							<td th:text="${aProject.name}" />
 							<td th:text="${aProject.stage}" />
+							<td th:text="${aProject.description}" />
 						</tr>
 					</tbody>
 				</table>

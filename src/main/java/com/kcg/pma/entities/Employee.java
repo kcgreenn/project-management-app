@@ -1,15 +1,23 @@
 package com.kcg.pma.entities;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Employee {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+//	Generate id starting at 1 by default, better for batching operations
+//	@GeneratedValue(strategy=GenerationType.AUTO)
+//	Generate id based on values already in db
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long employeeId;
 	
 	private String firstName;
@@ -17,6 +25,27 @@ public class Employee {
 	
 	private String email;
 	
+	// Create a many to one relationship between employees and projects. projectId as foreign key. 
+	// Cascade all but "REMOVE" and only fetch the employees of the current project.
+	@ManyToMany(
+			cascade= {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH,CascadeType.PERSIST}, 
+			fetch = FetchType.LAZY
+	)
+	@JoinTable(
+			name="project_employee", 
+			joinColumns=@JoinColumn(name="employeeId"), 
+			inverseJoinColumns=@JoinColumn(name="projectId")
+		)
+	private java.util.List<Project> projects;
+
+	public java.util.List<Project> getProjects() {
+		return projects;
+	}
+
+	public void setProjects(java.util.List<Project> projects) {
+		this.projects = projects;
+	}
+
 	public Employee() {
 		
 	}

@@ -16,6 +16,19 @@
 			</select>
 			<label class="mt-3" for="description">Project Description</label>
 			<textarea id="desciption" name="desciption" type="text" placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget sem..." th:field="${project.description}" class="form-control" rows="3"></textarea>
+			<label class="mt-5" for="employee-select">Add Employees</label>
+			<select
+				id="employee-select"
+				name="employee-select"
+				class="custom-select" 
+				th:field="*{employees}"
+				multiple="multiple">
+				<option 
+					th:each="employee : ${allEmployees}" 
+					th:value="${employee.employeeId}"
+					th:text="${employee.firstName}"
+					></option>
+			</select>
 			<div class="row mt-5">
 				<a th:href="@{/projects}" title="Cancel" class="col">
 					<button class="btn btn-danger mt-3 col" type="button">Cancel</button>

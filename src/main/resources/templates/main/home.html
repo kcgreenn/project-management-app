@@ -5,13 +5,16 @@
   	<nav th:replace="layouts :: navbar"></nav>
 	<div class="container" style="min-height:75vh">
 		<div class="row mt-5">
-			<h1>PMA - Project Manager</h1>
+		<div class="col-6">
+			<h1>Dashboard</h1>
+			<hr />
+		</div>
 		</div>
 		<div class="row mt-5">
-			<div class="col-sm">
+			<div class="col-md-8">
 				<h4>Projects</h4>
-				<table class="table">
-					<thead>
+				<table class="table table-striped">
+					<thead class="thead-dark">
 						<tr>
 							<th>Name</th>
 							<th>Stage</th>
@@ -24,28 +27,33 @@
 						</tr>
 					</tbody>
 				</table>
-			</div>
-			<div class="col-sm">
 				<h4> Employees</h4>
-				<table class="table">
-					<thead>
+				<table class="table table-striped">
+					<thead class="thead-dark">
 						<tr>
 							<th>First Name</th>
 							<th>Last Name</th>
-							<th>Email</th>
+							<th>Project Count</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr th:each="anEmployee : ${employees}">
-							<td th:text="${anEmployee.firstName}" />
-							<td th:text="${anEmployee.lastName}" />
-							<td th:text="${anEmployee.email}" />
+						<tr th:each="anEmployeeProjectCount : ${employeesProjectCnt}">
+							<td th:text="${anEmployeeProjectCount.firstName}" />
+							<td th:text="${anEmployeeProjectCount.lastName}" />
+							<td th:text="${anEmployeeProjectCount.projectCount}"}
 						</tr>
 					</tbody>
 				</table>
 			</div>
+			<div class="col-md-4">
+				<canvas id="myDoughnutChart" height="400" width="400"></canvas>
+				<script>
+					var chartData = "[[${stageCounts}]]";
+				</script>
+			</div>
 		</div>
 	</div>
 	<footer th:replace = "layouts :: footer"></footer>
+	<script type="text/javascript" th:src="@{js/mychart.js}"></script>
   </body>
 </html>
