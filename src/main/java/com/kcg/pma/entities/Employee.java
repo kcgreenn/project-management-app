@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.SequenceGenerator;
 
 @Entity
 public class Employee {
@@ -16,8 +17,10 @@ public class Employee {
 	@Id
 //	Generate id starting at 1 by default, better for batching operations
 //	@GeneratedValue(strategy=GenerationType.AUTO)
-//	Generate id based on values already in db
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+//	IDENTITY - Generate id based on values already in db
+//	SEQUENCE - Continue sequence already established, more performant/allows batching.	
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "employee_generator")
+	@SequenceGenerator(name = "employee_generator", sequenceName = "employee_seq", allocationSize = 1)
 	private long employeeId;
 	
 	private String firstName;

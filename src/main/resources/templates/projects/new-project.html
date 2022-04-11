@@ -3,7 +3,7 @@
   <head th:replace="layouts :: header"></head>
   <body>
     <nav th:replace="layouts :: navbar"></nav>
-	<div class="container">
+	<div class="container" style="min-height:calc(100vh - 144px)">
 		<form action="/projects/save" method="POST" th:object="${project}" class="col form-group mt-5">
 			<h2>Add Project</h2>
 			<label for="projectName">Project Name</label>
@@ -37,5 +37,6 @@
 			</div>
 		</form>
 	</div>
+	<footer th:replace = "layouts :: footer"></footer>
   </body>
 </html>

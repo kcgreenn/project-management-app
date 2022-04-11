@@ -20,7 +20,7 @@ chartDataArray.forEach((chartDatum) => {
     labels: labels,
     datasets: [{
       label: 'Project Stage',
-      backgroundColor: ["darkslategray", "tomato", "#3cba91"],
+      backgroundColor: ["limegreen", "tomato", "darkslategray"],
       data: countData,
     }]
   };
@@ -29,14 +29,17 @@ chartDataArray.forEach((chartDatum) => {
     type: 'doughnut',
     data: data,
     options: {
-		title: {
-			display: true,
-			text: 'Project Statuses',
-			color: 'black',
-			fullSize: true,
-			position: 'top',	
-		}
-}
+		responsive: true,
+		plugins:{
+			legend:{
+				position:'top'
+			},
+			title: {
+				display: true,
+				text: 'Project Status',
+			},
+		},
+	}
   };
   
   const myChart = new Chart(

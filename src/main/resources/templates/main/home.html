@@ -3,14 +3,15 @@
   <head th:replace="layouts :: header"></head>
   <body>
   	<nav th:replace="layouts :: navbar"></nav>
-	<div class="container" style="min-height:75vh">
-		<div class="row mt-5">
+	<div class="container" style="min-height:calc(100vh - 144px)">
+		<div class="row mt-3">
 		<div class="col-6">
 			<h1>Dashboard</h1>
+			<h6>Ver. <span th:text="${versionNumber}"></span></h6>
 			<hr />
 		</div>
 		</div>
-		<div class="row mt-5">
+		<div class="row mt-3">
 			<div class="col-md-8">
 				<h4>Projects</h4>
 				<table class="table table-striped">
@@ -27,6 +28,16 @@
 						</tr>
 					</tbody>
 				</table>
+			</div>
+			<div class="col-md-4">
+				<canvas id="myDoughnutChart" height="400" width="400"></canvas>
+				<script>
+					var chartData = "[[${stageCounts}]]";
+				</script>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-8">
 				<h4> Employees</h4>
 				<table class="table table-striped">
 					<thead class="thead-dark">
@@ -44,12 +55,6 @@
 						</tr>
 					</tbody>
 				</table>
-			</div>
-			<div class="col-md-4">
-				<canvas id="myDoughnutChart" height="400" width="400"></canvas>
-				<script>
-					var chartData = "[[${stageCounts}]]";
-				</script>
 			</div>
 		</div>
 	</div>

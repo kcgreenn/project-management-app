@@ -3,7 +3,7 @@
   <head th:replace="layouts :: header"></head>
   <body>
     	<nav th:replace="layouts :: navbar"></nav>
-	<div class="container mx-auto">
+	<div class="container mx-auto" style="min-height:calc(100vh - 144px)">
 		<form action="/employees/save" method="POST" th:object="${employee}" class="mt-5 col">
 			<div class="form-group">
 				<h2>Add Employee</h2>
@@ -22,5 +22,6 @@
 			</div>
 		</form>
 	</div>
+	<footer th:replace = "layouts :: footer"></footer>
   </body>
 </html>
