@@ -4,38 +4,41 @@
   <body>
     <nav th:replace="layouts :: navbar"></nav>
 	<div class="container" style="min-height:calc(100vh - 144px)">
-		<form action="/projects/save" method="POST" th:object="${project}" class="col form-group mt-5">
-			<h2>Add Project</h2>
-			<label for="projectName">Project Name</label>
-			<input id="projectName" name="projectName" type="text" placeholder="New Project" th:field="${project.name}" class="form-control">
-			<label class="mt-3">Project Stage</label>
-			<select class="custom-select" th:field="${project.stage}">
-				<option th:value="NOTSTARTED">Not Started</option>
-				<option th:value="INPROGRESS">In Progress</option>
-				<option th:value="COMPLETED">Completed</option>
-			</select>
-			<label class="mt-3" for="description">Project Description</label>
-			<textarea id="desciption" name="desciption" type="text" placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget sem..." th:field="${project.description}" class="form-control" rows="3"></textarea>
-			<label class="mt-5" for="employee-select">Add Employees</label>
-			<select
-				id="employee-select"
-				name="employee-select"
-				class="custom-select" 
-				th:field="*{employees}"
-				multiple="multiple">
-				<option 
-					th:each="employee : ${allEmployees}" 
-					th:value="${employee.employeeId}"
-					th:text="${employee.firstName}"
-					></option>
-			</select>
-			<div class="row mt-5">
-				<a th:href="@{/projects}" title="Cancel" class="col">
-					<button class="btn btn-danger mt-3 col" type="button">Cancel</button>
-				</a>
-				<button class="btn btn-success mt-3 col" type="submit">Create</button>
-			</div>
-		</form>
+		<div class="row">
+			<div class="col-md-2"></div>
+			<form action="/projects/save" method="POST" th:object="${project}" class="col-md-8 form-group mt-5">
+				<h2>Add Project</h2>
+				<label for="projectName">Project Name</label>
+				<input id="projectName" name="projectName" type="text" placeholder="New Project" th:field="${project.name}" class="form-control">
+				<label class="mt-3">Project Stage</label>
+				<select class="custom-select" th:field="${project.stage}">
+					<option th:value="NOTSTARTED">Not Started</option>
+					<option th:value="INPROGRESS">In Progress</option>
+					<option th:value="COMPLETED">Completed</option>
+				</select>
+				<label class="mt-3" for="description">Project Description</label>
+				<textarea id="desciption" name="desciption" type="text" placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget sem..." th:field="${project.description}" class="form-control" rows="3"></textarea>
+				<label class="mt-5" for="employee-select">Add Employees</label>
+				<select
+					id="employee-select"
+					name="employee-select"
+					class="custom-select" 
+					th:field="*{employees}"
+					multiple="multiple">
+					<option 
+						th:each="employee : ${allEmployees}" 
+						th:value="${employee.employeeId}"
+						th:text="${employee.firstName}"
+						></option>
+				</select>
+				<div class="row mt-5">
+					<a th:href="@{/projects}" title="Cancel" class="col">
+						<button class="btn btn-danger mt-3 col" type="button">Cancel</button>
+					</a>
+					<button class="btn btn-success mt-3 col" type="submit">Create</button>
+				</div>
+			</form>
+		</div>
 	</div>
 	<footer th:replace = "layouts :: footer"></footer>
   </body>

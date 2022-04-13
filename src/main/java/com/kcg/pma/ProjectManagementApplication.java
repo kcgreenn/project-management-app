@@ -21,6 +21,7 @@ public class ProjectManagementApplication {
 	IProjectRepository proRepo;
 
 	public static void main(String[] args) {
+        System.out.println(System.getenv("jdbcUrl"));
 		SpringApplication.run(ProjectManagementApplication.class, args);
 	}
 	

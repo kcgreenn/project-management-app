@@ -4,23 +4,26 @@
   <body>
     	<nav th:replace="layouts :: navbar"></nav>
 	<div class="container mx-auto" style="min-height:calc(100vh - 144px)">
-		<form action="/employees/save" method="POST" th:object="${employee}" class="mt-5 col">
-			<div class="form-group">
-				<h2>Add Employee</h2>
-			    <label class="mt-3" for="firstName">First Name</label>
-				<input class="form-control" id="firstName" name="firstName"type="text" placeholder="John" th:field="${employee.firstName}">
-				<label class="mt-3" for="lastName">Last Name</label>
-				<input class="form-control" id="lastName" name="lastName" type="text" placeholder="Doe" th:field="${employee.lastName}">
-				<label class="mt-3" for="email">Email address</label>
-				<input class="form-control" id="email" name="email" type="text" placeholder="example@email.com" th:field="${employee.email}">
-				<div class="row mt-5">
-					<a th:href="@{/employees}" title="Cancel" class="col">
-						<button class="btn btn-danger mt-3 col" type="button">Cancel</button>
-					</a>
-					<button class="btn btn-success mt-3 col" type="submit">Create</button>
+		<div class="row">
+			<div class="col-md-2"></div>
+			<form action="/employees/save" method="POST" th:object="${employee}" class="mt-5 col-md-8">
+				<div class="form-group">
+					<h2>Add Employee</h2>
+				    <label class="mt-3" for="firstName">First Name</label>
+					<input class="form-control" id="firstName" name="firstName"type="text" placeholder="John" th:field="${employee.firstName}">
+					<label class="mt-3" for="lastName">Last Name</label>
+					<input class="form-control" id="lastName" name="lastName" type="text" placeholder="Doe" th:field="${employee.lastName}">
+					<label class="mt-3" for="email">Email address</label>
+					<input class="form-control" id="email" name="email" type="text" placeholder="example@email.com" th:field="${employee.email}">
+					<div class="row mt-5">
+						<a th:href="@{/employees}" title="Cancel" class="col">
+							<button class="btn btn-danger mt-3 col" type="button">Cancel</button>
+						</a>
+						<button class="btn btn-success mt-3 col" type="submit">Create</button>
+					</div>
 				</div>
-			</div>
-		</form>
+			</form>
+		</div>
 	</div>
 	<footer th:replace = "layouts :: footer"></footer>
   </body>
