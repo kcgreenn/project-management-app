@@ -11,11 +11,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.kcg.pma.dao.IEmployeeRepository;
-import com.kcg.pma.dao.IProjectRepository;
 import com.kcg.pma.dto.EmployeeProject;
 import com.kcg.pma.dto.StageCount;
 import com.kcg.pma.entities.Project;
+import com.kcg.pma.services.EmployeeService;
+import com.kcg.pma.services.ProjectService;
 
 @Controller
 public class HomeController {
@@ -28,9 +28,11 @@ public class HomeController {
 	// In this case, the CRUDRepository class.
 	// Otherwise would need to create a new instance and implement all methods.
 	@Autowired
-	IProjectRepository proRepo;
+	ProjectService projectService;
+//	IProjectRepository proRepo;
 	@Autowired
-	IEmployeeRepository empRepo;
+	EmployeeService employeeService;
+//	IEmployeeRepository empRepo;
 	
 	@GetMapping("/")
 	public String displayHome(Model model) throws JsonProcessingException {
@@ -38,11 +40,11 @@ public class HomeController {
 		model.addAttribute("versionNumber", ver);
 		
 		// Get all projects and employees from database
-		java.util.List<Project> projects = proRepo.findAll();
+		java.util.List<Project> projects = projectService.getAll();
 		
-		java.util.List<EmployeeProject> employeesProjectCnt = empRepo.employeeProjects();
+		java.util.List<EmployeeProject> employeesProjectCnt = employeeService.employeeProjects();
 		
-		java.util.List<StageCount> stageCounts = proRepo.getStageCountList();
+		java.util.List<StageCount> stageCounts = projectService.getProjectStatus();
 		// Convert stageCounts to json
 		Map<String, Object> map = new HashMap<>();
 		ObjectMapper objectMapper = new ObjectMapper();

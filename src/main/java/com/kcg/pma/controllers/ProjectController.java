@@ -8,25 +8,27 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.kcg.pma.dao.IEmployeeRepository;
-import com.kcg.pma.dao.IProjectRepository;
 import com.kcg.pma.entities.Employee;
 import com.kcg.pma.entities.Project;
+import com.kcg.pma.services.EmployeeService;
+import com.kcg.pma.services.ProjectService;
 
 @Controller
 @RequestMapping("/projects")
 public class ProjectController {
 	
 	@Autowired
-	IProjectRepository proRepo;
+	ProjectService projectService;
+//	IProjectRepository proRepo;
 	
 	@Autowired
-	IEmployeeRepository empRepo;
+	EmployeeService employeeService;
+//	IEmployeeRepository empRepo;
 	
 	@GetMapping("")
 	public String displayProjectHome(Model model) {
 		// Get all project data
-		java.util.List<Project> projects = proRepo.findAll();
+		java.util.List<Project> projects = projectService.getAll();
 		// Map data to template
 		model.addAttribute("projects", projects);
 		// Return project home template
@@ -38,7 +40,7 @@ public class ProjectController {
 		// Create a new project with default constructor
 		Project aProject = new Project();
 		// Get list of all employees to be added to the project
-		java.util.List<Employee> employeesList =  empRepo.findAll();
+		java.util.List<Employee> employeesList =  employeeService.getAll();
 		// Get user input for new project attributes
 		model.addAttribute("project", aProject);
 		model.addAttribute("allEmployees", employeesList);
@@ -49,7 +51,7 @@ public class ProjectController {
 	@PostMapping("/save")
 	public String createProject(Project project, @RequestParam java.util.List<Long> employees, Model model) {
 		// Save project to database
-		proRepo.save(project);
+		projectService.save(project);
 		
 		// Following code is no longer needed now that a many to many relation
 		// has been created btwn employees and projects

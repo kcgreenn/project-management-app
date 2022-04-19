@@ -9,17 +9,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.kcg.pma.dao.IEmployeeRepository;
 import com.kcg.pma.entities.Employee;
+import com.kcg.pma.services.EmployeeService;
 
 @Controller
 @RequestMapping("/employees")
 public class EmployeeController {
 	@Autowired
-	IEmployeeRepository empRepo;
+	EmployeeService employeeService;
+//	IEmployeeRepository empRepo;
 	
 	@GetMapping("")
 	public String displayEmployeeHome(Model model) {
 		// Get all employee data
-		java.util.List<Employee> employees = empRepo.findAll();
+		java.util.List<Employee> employees = employeeService.getAll();
 		// Map employees to template
 		model.addAttribute("employees", employees);
 		// Return employee home template
@@ -39,7 +41,7 @@ public class EmployeeController {
 	@PostMapping("/save")
 	public String createEmployee(Employee employee, Model model) {
 		// Save employee to database
-		empRepo.save(employee);
+		employeeService.save(employee);
 		// Redirect to prevent duplicate submissions
 		return "redirect:/employees/new";
 	}

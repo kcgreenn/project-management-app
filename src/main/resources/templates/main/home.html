@@ -7,7 +7,6 @@
 		<div class="row mt-3">
 		<div class="col-6">
 			<h1>Dashboard</h1>
-			<h6>Ver. <span th:text="${versionNumber}"></span></h6>
 			<hr />
 		</div>
 		</div>
@@ -57,6 +56,9 @@
 				</table>
 			</div>
 		</div>
+	</div>
+	<div class="col-12">
+	    <h6>Version: <span th:text="${versionNumber}"></span></h6>
 	</div>
 	<footer th:replace = "layouts :: footer"></footer>
 	<script type="text/javascript" th:src="@{js/mychart.js}"></script>
