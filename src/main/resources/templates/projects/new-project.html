@@ -6,7 +6,7 @@
 	<div class="container" style="min-height:calc(100vh - 144px)">
 		<div class="row">
 			<div class="col-md-2"></div>
-			<form action="/projects/save" method="POST" th:object="${project}" class="col-md-8 form-group mt-5">
+			<form th:action="@{/projects/save}" method="POST" th:object="${project}" class="col-md-8 form-group mt-5">
 				<h2>Add Project</h2>
 				<label for="projectName">Project Name</label>
 				<input id="projectName" name="projectName" type="text" placeholder="New Project" th:field="${project.name}" class="form-control">
@@ -31,6 +31,7 @@
 						th:text="${employee.firstName}"
 						></option>
 				</select>
+				<input type="hidden" name="_csrf" th:value="${_csrf.token}" />
 				<div class="row mt-5">
 					<a th:href="@{/projects}" title="Cancel" class="col">
 						<button class="btn btn-danger mt-3 col" type="button">Cancel</button>

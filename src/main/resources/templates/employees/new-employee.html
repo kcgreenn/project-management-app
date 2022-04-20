@@ -6,7 +6,7 @@
 	<div class="container mx-auto" style="min-height:calc(100vh - 144px)">
 		<div class="row">
 			<div class="col-md-2"></div>
-			<form action="/employees/save" method="POST" th:object="${employee}" class="mt-5 col-md-8">
+			<form th:action="@{/employees/save}" method="POST" th:object="${employee}" class="mt-5 col-md-8">
 				<div class="form-group">
 					<h2>Add Employee</h2>
 				    <label class="mt-3" for="firstName">First Name</label>
