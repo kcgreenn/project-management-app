@@ -21,6 +21,7 @@ public class ApplicationLoggerAspect {
 		// empty method to name location of pointcut
 	}
 	
+	// Before, After, Around
 	// This method will run after everything in the controllers and services packages
 	@After("definePackagePointcuts()")
 	public void logAfter(JoinPoint jp) {
@@ -29,6 +30,5 @@ public class ApplicationLoggerAspect {
 				jp.getSignature().getDeclaringTypeName(),
 				jp.getSignature().getName(), Arrays.toString(jp.getArgs()));
 		log.debug("_______________________________________________ \n \n \n");
-		
 	}
 }

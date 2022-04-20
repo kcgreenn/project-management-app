@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head th:replace="layouts :: header"></head>
+<body>
+	<nav th:replace="layouts :: navbar"></nav>
+    <div class="container" style="min-height:100vh">
+    	<h3 class="mt-5">Sorry, this resource does not exist.</h3>
+    	<input 
+    		onclick='javascript:window.history.back()' 
+    		value='Back' 
+    		type='button'
+    		class="btn btn-lg btn-primary mt-5 px-5" />
+    </div>
+    <footer th:replace = "layouts :: footer"></footer>
+</body>
+</html>
